@@ -101,32 +101,45 @@ public class ClienteProcessor {
 	}
 
 	private String classify(double latitude, double longitude) {
-		double minLat1 = -46.361899;
-		double maxLat1 = -34.276938;
-		double minLon1 = -15.411580;
-		double maxLon1 = -2.196998;
+		
+		// Limites para a categoria "ESPECIAL"
+		double minlat_ESPECIAL = -46.361899;
+        double maxlat_ESPECIAL = -34.276938;
+        double minlon_ESPECIAL = -15.411580;
+        double maxlon_ESPECIAL = -2.196998;
 
-		double minLat2 = -52.997614;
-		double maxLat2 = -44.428305;
-		double minLon2 = -23.966413;
-		double maxLon2 = -19.766959;
+        // Limites para a categoria "NORMAL"
+        double minlat_NORMAL = -54.777426;
+        double maxlat_NORMAL = -46.603598;
+        double minlon_NORMAL = -34.016466;
+        double maxlon_NORMAL = -26.155681;
 
-		double minLat = -54.777426;
-		double maxLat = -46.603598;
-		double minLon = -34.016466;
-		double maxLon = -26.155681;
+	    double minlat_ESPECIAL2 = -52.997614;
+	    double maxlat_ESPECIAL2 = -44.428305;
+	    double minlon_ESPECIAL2 = -23.966413;
+	    double maxlon_ESPECIAL2 = -19.766959;
 
 		// Classificação
-		String classificacao;
+		String classificacao = null;
 
-		if ((latitude >= minLat1 && latitude <= maxLat1 && longitude >= minLon1 && longitude <= maxLon1)
-				|| (latitude >= minLat2 && latitude <= maxLat2 && longitude >= minLon2 && longitude <= maxLon2)) {
-			classificacao = "ESPECIAL";
-		} else if (latitude >= minLat && latitude <= maxLat && longitude >= minLon && longitude <= maxLon) {
-			classificacao = "NORMAL";
-		} else {
-			classificacao = "TRABALHOSO";
-		}
+		if ((latitude >= minlat_ESPECIAL && latitude <= maxlat_ESPECIAL) &&
+                (longitude >= minlon_ESPECIAL && longitude <= maxlon_ESPECIAL)) {
+			
+            classificacao = "especial";
+            
+        } else if ((latitude >= minlat_ESPECIAL2 && latitude <= maxlat_ESPECIAL2) &&
+                (longitude >= minlon_ESPECIAL2 && longitude <= maxlon_ESPECIAL2)) {
+        	
+        	classificacao = "especial";
+        	
+		}else if((latitude >= minlat_NORMAL && latitude <= maxlat_NORMAL) &&
+                (longitude >= minlon_NORMAL && longitude <= maxlon_NORMAL)) {
+			
+            classificacao = "normal";
+            
+        } else {
+            classificacao = "trabalhoso";
+        }
 
 		return classificacao;
 	}
