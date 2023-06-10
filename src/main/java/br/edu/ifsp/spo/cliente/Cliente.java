@@ -38,6 +38,8 @@ public class Cliente {
 	private Location location;
 
 	private String email;
+	
+	private String classificacao;
 
 	@Embedded
 	private Dob dob;

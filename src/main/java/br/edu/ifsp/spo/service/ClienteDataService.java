@@ -130,4 +130,8 @@ public class ClienteDataService {
         File file = new File(jsonFilePath);
         objectMapper.writeValue(file, data);
     }
+    
+    public List<Cliente> getUsers() {
+    	return this.repository.findAll();
+    }
 }

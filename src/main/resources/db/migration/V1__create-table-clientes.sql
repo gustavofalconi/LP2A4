@@ -2,6 +2,7 @@ CREATE TABLE clientes (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     gender VARCHAR(255),
     email VARCHAR(255),
+    classificacao VARCHAR(255),
     nationality VARCHAR(255),
     name_title VARCHAR(255),
     name_first VARCHAR(255),
