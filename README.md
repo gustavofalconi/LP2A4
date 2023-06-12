@@ -5,6 +5,10 @@ Trabalho em grupo da disciplina "Linguagem de Programação 2" do IFSP
 
 **Você pode [acessar o código fonte do trabalho](https://github.com/gustavofalconi/LP2A4/tree/main) ou [baixa-lo.](https://github.com/gustavofalconi/LP2A4/archive/refs/heads/main.zip)**
 
+### Repositório do Front-End
+
+<a>https://github.com/EricoDev-Front/Linguagem2Front/</a>
+
 ## 🛠️ Abrir e rodar o projeto
 
 ### Pré-Requisitos: 
