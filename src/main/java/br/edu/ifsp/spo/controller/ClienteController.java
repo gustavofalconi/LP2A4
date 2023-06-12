@@ -13,7 +13,7 @@ import br.edu.ifsp.spo.service.ClienteDataService;
 
 @RestController
 @RequestMapping("clientes")
-@CrossOrigin(origins = "file:///C:/Users/supor/OneDrive/Documentos/JavaProjetos/lp2a4-front/index.html")
+@CrossOrigin(origins = "*")
 public class ClienteController {
 
 	private final ClienteDataService dataService;
@@ -23,24 +23,24 @@ public class ClienteController {
 	}
 
 	@GetMapping
-    public List<Cliente> getClientes(@RequestParam(required = false) String region, 
-    		@RequestParam(required = false) String classificacao){
-    	
-    	List<Cliente> clientes = dataService.getUsers();
-    	
-    	if (region != null && classificacao != null) {
-    	    clientes = filtrarPorRegiaoEClassificacao(clientes, region, classificacao);
-    	}
-    	if(region != null) {
-    		clientes = filtrarPorRegiao(clientes, region);
-    	}
-    	
-    	if(classificacao != null) {
-    		clientes = filtrarPorClassificacao(clientes, classificacao);
-    	}
-    	
-    	return clientes;
-    }
+	public List<Cliente> getClientes(@RequestParam(required = false) String region, 
+			@RequestParam(required = false) String classificacao){
+
+		    List<Cliente> clientes = dataService.getUsers();
+		    
+		    if (region == null && classificacao == null) {
+		        return clientes;
+		    }
+		    if (region != null && classificacao != null) {
+		        clientes = filtrarPorRegiaoEClassificacao(clientes, region, classificacao);
+		    } else if (region != null) {
+		        clientes = filtrarPorRegiao(clientes, region);
+		    } else if (classificacao != null) {
+		        clientes = filtrarPorClassificacao(clientes, classificacao);
+		    }
+		    
+		    return clientes;
+		}
 
 	private List<Cliente> filtrarPorRegiaoEClassificacao(List<Cliente> clientes, String region, String classificacao) {
 
